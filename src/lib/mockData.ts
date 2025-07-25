@@ -77,101 +77,11 @@ export const mockIncidents = [
   },
   {
     id: '6',
-    type: 'Suspicious Activity',
+    type: 'Traffic Congestion',
     tsStart: new Date(Date.now() - 15 * 60 * 1000), // 15 minutes ago
     tsEnd: new Date(Date.now() - 15 * 60 * 1000 + 85 * 60 * 1000),
     thumbnailUrl: '/images/thumbnails/incident-6.png',
     resolved: false,
-    camera: {
-      id: '3',
-      name: 'Camera - 03',
-      location: 'Entrance',
-      createdAt: new Date(),
-    },
-    createdAt: new Date(),
-  },
-  {
-    id: '7',
-    type: 'Vandalism',
-    tsStart: new Date(Date.now() - 4 * 60 * 60 * 1000), // 4 hours ago
-    tsEnd: new Date(Date.now() - 4 * 60 * 60 * 1000 + 95 * 60 * 1000),
-    thumbnailUrl: '/images/thumbnails/incident-7.jpg',
-    resolved: false,
-    camera: {
-      id: '1',
-      name: 'Camera - 01',
-      location: 'Shop Floor',
-      createdAt: new Date(),
-    },
-    createdAt: new Date(),
-  },
-  {
-    id: '8',
-    type: 'Fire Alarm',
-    tsStart: new Date(Date.now() - 6 * 60 * 60 * 1000), // 6 hours ago
-    tsEnd: new Date(Date.now() - 6 * 60 * 60 * 1000 + 45 * 60 * 1000),
-    thumbnailUrl: '/images/thumbnails/incident-8.jpg',
-    resolved: true,
-    camera: {
-      id: '2',
-      name: 'Camera - 02',
-      location: 'Back Entrance',
-      createdAt: new Date(),
-    },
-    createdAt: new Date(),
-  },
-  {
-    id: '9',
-    type: 'Motion Detection',
-    tsStart: new Date(Date.now() - 1.5 * 60 * 60 * 1000), // 1.5 hours ago
-    tsEnd: new Date(Date.now() - 1.5 * 60 * 60 * 1000 + 60 * 60 * 1000),
-    thumbnailUrl: '/images/thumbnails/incident-9.jpg',
-    resolved: false,
-    camera: {
-      id: '3',
-      name: 'Camera - 03',
-      location: 'Entrance',
-      createdAt: new Date(),
-    },
-    createdAt: new Date(),
-  },
-  {
-    id: '10',
-    type: 'Package Theft',
-    tsStart: new Date(Date.now() - 7 * 60 * 60 * 1000), // 7 hours ago
-    tsEnd: new Date(Date.now() - 7 * 60 * 60 * 1000 + 25 * 60 * 1000),
-    thumbnailUrl: '/images/thumbnails/incident-10.jpg',
-    resolved: true,
-    camera: {
-      id: '1',
-      name: 'Camera - 01',
-      location: 'Shop Floor',
-      createdAt: new Date(),
-    },
-    createdAt: new Date(),
-  },
-  {
-    id: '11',
-    type: 'Loitering',
-    tsStart: new Date(Date.now() - 5.5 * 60 * 60 * 1000), // 5.5 hours ago
-    tsEnd: new Date(Date.now() - 5.5 * 60 * 60 * 1000 + 180 * 60 * 1000),
-    thumbnailUrl: '/images/thumbnails/incident-11.jpg',
-    resolved: true,
-    camera: {
-      id: '2',
-      name: 'Camera - 02',
-      location: 'Back Entrance',
-      createdAt: new Date(),
-    },
-    createdAt: new Date(),
-  },
-  {
-    id: '12',
-    type: 'Vehicle Break-in',
-    tsStart: new Date(Date.now() - 8 * 60 * 60 * 1000), // 8 hours ago
-    tsEnd: new Date(Date.now() - 8 * 60 * 60 * 1000 + 40 * 60 * 1000),
-    thumbnailUrl: '/images/thumbnails/incident-12.jpg',
-    resolved: true,
     camera: {
       id: '3',
       name: 'Camera - 03',
@@ -197,7 +107,7 @@ export const mockIncidents = [
   },
   {
     id: '14',
-    type: 'Aggressive Behavior',
+    type: 'Gun Threat',
     tsStart: new Date(Date.now() - 10 * 60 * 60 * 1000), // 10 hours ago
     tsEnd: new Date(Date.now() - 10 * 60 * 60 * 1000 + 120 * 60 * 1000),
     thumbnailUrl: '/images/thumbnails/incident-2.png',
@@ -226,71 +136,11 @@ export const mockIncidents = [
     createdAt: new Date(),
   },
   {
-    id: '16',
-    type: 'Slip and Fall',
-    tsStart: new Date(Date.now() - 3.5 * 60 * 60 * 1000), // 3.5 hours ago
-    tsEnd: new Date(Date.now() - 3.5 * 60 * 60 * 1000 + 35 * 60 * 1000),
-    thumbnailUrl: '/images/thumbnails/incident-4.png',
-    resolved: true,
-    camera: {
-      id: '2',
-      name: 'Camera - 02',
-      location: 'Back Entrance',
-      createdAt: new Date(),
-    },
-    createdAt: new Date(),
-  },
-  {
-    id: '17',
-    type: 'Equipment Malfunction',
-    tsStart: new Date(Date.now() - 9 * 60 * 60 * 1000), // 9 hours ago
-    tsEnd: new Date(Date.now() - 9 * 60 * 60 * 1000 + 150 * 60 * 1000),
-    thumbnailUrl: '/images/thumbnails/incident-5.png',
-    resolved: true,
-    camera: {
-      id: '3',
-      name: 'Camera - 03',
-      location: 'Entrance',
-      createdAt: new Date(),
-    },
-    createdAt: new Date(),
-  },
-  {
-    id: '18',
-    type: 'Tailgating',
-    tsStart: new Date(Date.now() - 50 * 60 * 1000), // 50 minutes ago
-    tsEnd: new Date(Date.now() - 50 * 60 * 1000 + 20 * 60 * 1000),
-    thumbnailUrl: '/images/thumbnails/incident-6.png',
-    resolved: false,
-    camera: {
-      id: '1',
-      name: 'Camera - 01',
-      location: 'Shop Floor',
-      createdAt: new Date(),
-    },
-    createdAt: new Date(),
-  },
-  {
-    id: '19',
-    type: 'Workplace Violence',
-    tsStart: new Date(Date.now() - 14 * 60 * 60 * 1000), // 14 hours ago
-    tsEnd: new Date(Date.now() - 14 * 60 * 60 * 1000 + 45 * 60 * 1000),
-    thumbnailUrl: '/images/thumbnails/incident-7.jpg',
-    resolved: true,
-    camera: {
-      id: '2',
-      name: 'Camera - 02',
-      location: 'Back Entrance',
-      createdAt: new Date(),
-    },
-    createdAt: new Date(),
-  },
-  {
     id: '20',
-    type: 'Perimeter Breach',
+    type: 'Unauthorised Access',
     tsStart: new Date(Date.now() - 35 * 60 * 1000), // 35 minutes ago
     tsEnd: new Date(Date.now() - 35 * 60 * 60 * 1000 + 80 * 60 * 1000),
-    thumbnailUrl: '/images/thumbnails/incident-8.jpg',
+    thumbnailUrl: '/images/thumbnails/incident-6.jpg',
     resolved: false,
     camera: {
       id: '3',
@@ -302,10 +152,10 @@ export const mockIncidents = [
   },
   {
     id: '21',
-    type: 'Medical Emergency',
+    type: 'Face Recognised',
     tsStart: new Date(Date.now() - 2 * 60 * 60 * 1000), // 2 hours ago
     tsEnd: new Date(Date.now() - 2 * 60 * 60 * 1000 + 30 * 60 * 1000),
-    thumbnailUrl: '/images/thumbnails/incident-9.jpg',
+    thumbnailUrl: '/images/thumbnails/incident-10.jpg',
     resolved: true,
     camera: {
       id: '1',
@@ -317,10 +167,10 @@ export const mockIncidents = [
   },
   {
     id: '22',
-    type: 'False Alarm',
+    type: 'Gun Threat',
     tsStart: new Date(Date.now() - 11 * 60 * 60 * 1000), // 11 hours ago
     tsEnd: new Date(Date.now() - 11 * 60 * 60 * 1000 + 15 * 60 * 1000),
-    thumbnailUrl: '/images/thumbnails/incident-10.jpg',
+    thumbnailUrl: '/images/thumbnails/incident-12.jpg',
     resolved: true,
     camera: {
       id: '2',
@@ -332,7 +182,7 @@ export const mockIncidents = [
   },
   {
     id: '23',
-    type: 'Smoke Detection',
+    type: 'Unauthorised Access',
     tsStart: new Date(Date.now() - 16 * 60 * 60 * 1000), // 16 hours ago
     tsEnd: new Date(Date.now() - 16 * 60 * 60 * 1000 + 90 * 60 * 1000),
     thumbnailUrl: '/images/thumbnails/incident-11.jpg',
@@ -347,10 +197,10 @@ export const mockIncidents = [
   },
   {
     id: '24',
-    type: 'Cyber Security Breach',
+    type: 'Traffic Congestion',
     tsStart: new Date(Date.now() - 20 * 60 * 1000), // 20 minutes ago
     tsEnd: new Date(Date.now() - 20 * 60 * 1000 + 120 * 60 * 1000),
-    thumbnailUrl: '/images/thumbnails/incident-12.jpg',
+    thumbnailUrl: '/images/thumbnails/incident-5.jpg',
     resolved: false,
     camera: {
       id: '1',
@@ -362,7 +212,7 @@ export const mockIncidents = [
   },
   {
     id: '25',
-    type: 'Intrusion Alert',
+    type: 'Face Recognised',
     tsStart: new Date(Date.now() - 10 * 60 * 1000), // 10 minutes ago
     tsEnd: new Date(Date.now() - 10 * 60 * 1000 + 90 * 60 * 1000),
     thumbnailUrl: '/images/thumbnails/incident-1.png',
@@ -377,7 +227,7 @@ export const mockIncidents = [
   },
   {
     id: '26',
-    type: 'Theft Attempt',
+    type: 'Traffic Congestion',
     tsStart: new Date(Date.now() - 5 * 60 * 1000), // 5 minutes ago
     tsEnd: new Date(Date.now() - 5 * 60 * 1000 + 40 * 60 * 1000),
     thumbnailUrl: '/images/thumbnails/incident-2.png',
@@ -392,7 +242,7 @@ export const mockIncidents = [
   },
   {
     id: '27',
-    type: 'Emergency Exit Used',
+    type: 'Unauthorised Access',
     tsStart: new Date(Date.now() - 40 * 60 * 1000), // 40 minutes ago
     tsEnd: new Date(Date.now() - 40 * 60 * 1000 + 25 * 60 * 1000),
     thumbnailUrl: '/images/thumbnails/incident-3.png',
@@ -407,7 +257,7 @@ export const mockIncidents = [
   },
   {
     id: '28',
-    type: 'Suspicious Package',
+    type: 'Face Recognised',
     tsStart: new Date(Date.now() - 75 * 60 * 1000), // 75 minutes ago
     tsEnd: new Date(Date.now() - 75 * 60 * 1000 + 60 * 60 * 1000),
     thumbnailUrl: '/images/thumbnails/incident-4.png',
@@ -422,7 +272,7 @@ export const mockIncidents = [
   },
   {
     id: '29',
-    type: 'System Maintenance',
+    type: 'Gun Threat',
     tsStart: new Date(Date.now() - 18 * 60 * 60 * 1000), // 18 hours ago
     tsEnd: new Date(Date.now() - 18 * 60 * 60 * 1000 + 240 * 60 * 1000),
     thumbnailUrl: '/images/thumbnails/incident-5.png',
@@ -437,7 +287,7 @@ export const mockIncidents = [
   },
   {
     id: '30',
-    type: 'Access Control Failure',
+    type: 'Traffic Congestion',
     tsStart: new Date(Date.now() - 25 * 60 * 1000), // 25 minutes ago
     tsEnd: new Date(Date.now() - 25 * 60 * 1000 + 55 * 60 * 1000),
     thumbnailUrl: '/images/thumbnails/incident-6.png',
