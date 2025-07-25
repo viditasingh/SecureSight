@@ -1,8 +1,8 @@
 'use client'
 
-import { useState, useRef, useEffect } from 'react'
+import { useState, useRef } from 'react'
 import { IncidentWithCamera, INCIDENT_TYPES } from '@/lib/types'
-import { Clock, Calendar, Activity, AlertTriangle, Play, Pause, SkipForward, SkipBack, Rewind, FastForward, Cctv } from 'lucide-react'
+import { Clock, AlertTriangle, Play, Pause, SkipForward, SkipBack, Rewind, FastForward, Cctv } from 'lucide-react'
 
 interface IncidentTimelineProps {
   incidents: IncidentWithCamera[]
@@ -13,9 +13,9 @@ interface IncidentTimelineProps {
 export function IncidentTimeline({ incidents, onIncidentSelect, selectedIncident }: IncidentTimelineProps) {
   const [currentTime, setCurrentTime] = useState(new Date())
   const [isDragging, setIsDragging] = useState(false)
-  const [hoveredIncident, setHoveredIncident] = useState<string | null>(null)
+  // const [hoveredIncident, setHoveredIncident] = useState<string | null>(null) // Future use
   const [isPlaying, setIsPlaying] = useState(false)
-  const [playbackSpeed, setPlaybackSpeed] = useState(1)
+  // const [playbackSpeed, setPlaybackSpeed] = useState(1) // Future use
   const timelineRef = useRef<SVGSVGElement>(null)
   const scrubberRef = useRef<number>(12) // Start at noon
 
@@ -41,11 +41,11 @@ export function IncidentTimeline({ incidents, onIncidentSelect, selectedIncident
     return date
   }
 
-  const formatTime = (hour: number) => {
-    if (hour === 0) return '00:00'
-    if (hour === 12) return '12:00'
-    return `${hour.toString().padStart(2, '0')}:00`
-  }
+  // const formatTime = (hour: number) => { // Future use
+  //   if (hour === 0) return '00:00'
+  //   if (hour === 12) return '12:00'
+  //   return `${hour.toString().padStart(2, '0')}:00`
+  // }
 
   const getIncidentColor = (type: string, isHovered: boolean = false, isSelected: boolean = false) => {
     const config = INCIDENT_TYPES[type as keyof typeof INCIDENT_TYPES]
@@ -56,15 +56,15 @@ export function IncidentTimeline({ incidents, onIncidentSelect, selectedIncident
     return baseColor
   }
 
-  const getTimestampColor = (type: string) => {
-    switch(type) {
-      case 'Gun Threat': return '#ef4444' // Red
-      case 'Unauthorised Access': return '#f97316' // Orange
-      case 'Face Recognised': return '#3b82f6' // Blue
-      case 'Traffic Congestion': return '#eab308' // Yellow
-      default: return '#6b7280' // Gray
-    }
-  }
+  // const getTimestampColor = (type: string) => { // Future use
+  //   switch(type) {
+  //     case 'Gun Threat': return '#ef4444' // Red
+  //     case 'Unauthorised Access': return '#f97316' // Orange
+  //     case 'Face Recognised': return '#3b82f6' // Blue
+  //     case 'Traffic Congestion': return '#eab308' // Yellow
+  //     default: return '#6b7280' // Gray
+  //   }
+  // }
 
   // Playback control functions
   const handlePlayPause = () => {
@@ -250,8 +250,8 @@ export function IncidentTimeline({ incidents, onIncidentSelect, selectedIncident
           {/* Camera Labels - Fixed left sidebar that stays visible during scroll */}
           <div className="flex-shrink-0 w-32 bg-black/95 border-r border-gray-700/50 z-20 sticky left-0 shadow-lg backdrop-blur-sm">
             <div style={{ height: `${RULER_HEIGHT + 20}px` }} className="border-b border-gray-800/50 bg-black/90"></div>
-            {CAMERAS.map((camera, index) => {
-              const hasIncidents = incidentsByCamera[camera]?.length > 0
+            {CAMERAS.map((camera) => {
+              // const hasIncidents = incidentsByCamera[camera]?.length > 0 // Future use
               
               return (
                 <div 
@@ -457,7 +457,7 @@ export function IncidentTimeline({ incidents, onIncidentSelect, selectedIncident
           }).filter(Boolean)}
 
           {/* Enhanced Camera tracks */}
-          {CAMERAS.map((camera, index) => {
+          {CAMERAS.map((camera) => {
             const y = getCameraTrackY(camera)
             const hasIncidents = incidentsByCamera[camera]?.length > 0
             
@@ -499,7 +499,7 @@ export function IncidentTimeline({ incidents, onIncidentSelect, selectedIncident
             const width = Math.max(6, endX - startX)
             const y = getCameraTrackY(incident.camera.name)
             const isSelected = selectedIncident?.id === incident.id
-            const isHovered = hoveredIncident === incident.id
+            const isHovered = false // Simplified for now
             const color = getIncidentColor(incident.type, isHovered, isSelected)
 
             return (

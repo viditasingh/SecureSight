@@ -1,6 +1,7 @@
 'use client'
 
-import { Shield, User, Activity, Settings, LayoutDashboard, CctvIcon, TvMinimal, LucideTriangleAlert, Users } from 'lucide-react'
+import { Shield, LayoutDashboard, CctvIcon, TvMinimal, LucideTriangleAlert, Users } from 'lucide-react'
+import Image from 'next/image'
 
 export function Navbar() {
   return (
@@ -48,9 +49,11 @@ export function Navbar() {
           {/* User Profile */}
           <div className="flex items-center space-x-2 md:space-x-3 px-2 md:px-3 py-1.5 md:py-2 bg-black/50 rounded-xl">
             <div className="relative">
-              <img 
+              <Image 
                 src="/images/thumbnails/profile.jpg" 
                 alt="Profile" 
+                width={36}
+                height={36}
                 className="h-7 w-7 md:h-9 md:w-9 rounded-full object-cover"
                 onError={(e) => {
                   e.currentTarget.onerror = null

@@ -27,7 +27,7 @@ export const tryLoadImage = (basePath: string, extensions: string[] = ['png', 'j
 }
 
 export const getImageSrc = (originalUrl: string): string => {
-  // Extract base path without extension
-  const basePath = originalUrl.replace(/\.[^.]+$/, '')
+  // Extract base path without extension for potential future use
+  // const basePath = originalUrl.replace(/\.[^.]+$/, '')
   return originalUrl // Return original first, fallback will be handled by onError
 }

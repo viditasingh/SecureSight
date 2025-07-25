@@ -1,9 +1,9 @@
 'use client'
 
-import { Button } from '@/components/ui/Button'
-import { Badge } from '@/components/ui/Badge'
+// import { Button } from '@/components/ui/Button' // Future use
+// import { Badge } from '@/components/ui/Badge' // Future use
 import { IncidentWithCamera, INCIDENT_TYPES } from '@/lib/types'
-import { formatTimeRange, formatRelativeTime } from '@/lib/utils'
+import { formatTimeRange } from '@/lib/utils'
 import { useState, useEffect } from 'react'
 import { DoorOpen,Cctv,OctagonAlert, ScanFace, TrafficCone, Clock } from 'lucide-react'
 
@@ -14,7 +14,7 @@ interface IncidentItemProps {
   isSelected?: boolean
 }
 
-export function IncidentItem({ incident, onResolve, onSelect, isSelected }: IncidentItemProps) {
+export function IncidentItem({ incident, onResolve, onSelect }: IncidentItemProps) {
   const [isResolving, setIsResolving] = useState(false)
   const [isResolved, setIsResolved] = useState(incident.resolved)
   const [mounted, setMounted] = useState(false)
@@ -23,7 +23,7 @@ export function IncidentItem({ incident, onResolve, onSelect, isSelected }: Inci
     setMounted(true)
   }, [])
   
-  const incidentTypeConfig = INCIDENT_TYPES[incident.type as keyof typeof INCIDENT_TYPES]
+  // const incidentTypeConfig = INCIDENT_TYPES[incident.type as keyof typeof INCIDENT_TYPES] // Future use
   
   const handleResolve = async (e: React.MouseEvent) => {
     e.stopPropagation()
