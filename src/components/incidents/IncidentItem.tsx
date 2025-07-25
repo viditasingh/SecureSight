@@ -2,9 +2,10 @@
 
 // import { Button } from '@/components/ui/Button' // Future use
 // import { Badge } from '@/components/ui/Badge' // Future use
-import { IncidentWithCamera, INCIDENT_TYPES } from '@/lib/types'
+import { IncidentWithCamera } from '@/lib/types'
 import { formatTimeRange } from '@/lib/utils'
 import { useState, useEffect } from 'react'
+import Image from 'next/image'
 import { DoorOpen,Cctv,OctagonAlert, ScanFace, TrafficCone, Clock } from 'lucide-react'
 
 interface IncidentItemProps {
@@ -50,9 +51,11 @@ export function IncidentItem({ incident, onResolve, onSelect }: IncidentItemProp
       <div className="flex items-start space-x-3">
         {/* Thumbnail */}
         <div className="relative w-20 h-14 rounded-lg overflow-hidden bg-black/50 border border-gray-800/30 flex-shrink-0">
-          <img
+          <Image
             src={incident.thumbnailUrl}
             alt={`${incident.type} incident`}
+            width={80}
+            height={56}
             className="w-full h-full object-cover"
             onError={(e) => {
               // Prevent further error events and set to fallback immediately

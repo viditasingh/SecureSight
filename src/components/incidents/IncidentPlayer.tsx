@@ -1,9 +1,10 @@
 'use client'
 
 import { Card } from '@/components/ui/Card'
-import { IncidentTimeline } from './IncidentTimeline'
+// import { IncidentTimeline } from './IncidentTimeline' // Future use
 import { IncidentWithCamera } from '@/lib/types'
 import { CalendarDays, Disc } from 'lucide-react'
+import Image from 'next/image'
 
 interface IncidentPlayerProps {
   selectedIncident?: IncidentWithCamera
@@ -11,7 +12,7 @@ interface IncidentPlayerProps {
   onIncidentSelect?: (incident: IncidentWithCamera) => void
 }
 
-export function IncidentPlayer({ selectedIncident, incidents = [], onIncidentSelect }: IncidentPlayerProps) {
+export function IncidentPlayer({ selectedIncident }: IncidentPlayerProps) {
   return (
     <div>
       {/* Main Video Player */}
@@ -19,10 +20,11 @@ export function IncidentPlayer({ selectedIncident, incidents = [], onIncidentSel
         <div className="relative aspect-video bg-black flex items-center justify-center">
           {selectedIncident ? (
             <div className="relative w-full h-full group">
-              <img
+              <Image
                 src={selectedIncident.thumbnailUrl}
                 alt={`${selectedIncident.type} incident`}
-                className="w-full h-full object-cover"
+                fill
+                className="object-cover"
                 onError={(e) => {
                   e.currentTarget.onerror = null
                   e.currentTarget.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgZmlsbD0iIzAwMDAwMCIvPjx0ZXh0IHg9IjIwMCIgeT0iMTUwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjZmZmZmZmIiBmb250LWZhbWlseT0iSW50ZXIsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTYiPk5vIEltYWdlPC90ZXh0Pjwvc3ZnPg=='
