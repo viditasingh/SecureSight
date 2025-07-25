@@ -1,0 +1,84 @@
+'use client'
+
+import { Card } from '@/components/ui/Card'
+import { IncidentTimeline } from './IncidentTimeline'
+import { IncidentWithCamera } from '@/lib/types'
+import { CalendarDays, Disc } from 'lucide-react'
+
+interface IncidentPlayerProps {
+  selectedIncident?: IncidentWithCamera
+  incidents?: IncidentWithCamera[]
+  onIncidentSelect?: (incident: IncidentWithCamera) => void
+}
+
+export function IncidentPlayer({ selectedIncident, incidents = [], onIncidentSelect }: IncidentPlayerProps) {
+  return (
+    <div>
+      {/* Main Video Player */}
+      <Card className="bg-black border-gray-800 overflow-hidden shadow-2xl">
+        <div className="relative aspect-video bg-black flex items-center justify-center">
+          {selectedIncident ? (
+            <div className="relative w-full h-full group">
+              <img
+                src={selectedIncident.thumbnailUrl}
+                alt={`${selectedIncident.type} incident`}
+                className="w-full h-full object-cover"
+                onError={(e) => {
+                  e.currentTarget.onerror = null
+                  e.currentTarget.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgZmlsbD0iIzAwMDAwMCIvPjx0ZXh0IHg9IjIwMCIgeT0iMTUwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjZmZmZmZmIiBmb250LWZhbWlseT0iSW50ZXIsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTYiPk5vIEltYWdlPC90ZXh0Pjwvc3ZnPg=='
+                }}
+              />
+              
+              {/* Gradient overlay for better text readability */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/30"></div>
+              
+              {/* Incident info overlay */}
+              <div className="absolute bottom-2 left-2 right-2 md:bottom-4 md:left-4 md:right-4">
+                <div className="text-white font-['Inter',sans-serif]">
+                  <div className="text-lg sm:text-xl md:text-2xl font-bold tracking-wide text-white mb-1 md:mb-2">{selectedIncident.type}</div>
+                  
+                  {/* Camera info and date in a flex container to prevent overlap */}
+                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-4">
+                    <div className="px-2 py-1 md:px-3 md:py-1 rounded-full text-xs font-semibold bg-black/60 text-gray-200 backdrop-blur-sm border border-gray-600/50 font-['Inter',sans-serif] w-fit flex items-center space-x-2">
+                      <Disc size={16} color="#f50000" className="flex-shrink-0"/> 
+                      <span>{selectedIncident.camera.name}</span>
+                    </div>
+                    
+                  </div>
+                </div>
+              </div>
+
+              {/* Status badge */}
+              <div className="absolute top-2 right-2 md:top-4 md:right-4">
+                <div className={`px-2 py-1 md:px-3 md:py-1 rounded-full text-xs font-semibold backdrop-blur-sm border font-['Inter',sans-serif] ${
+                  selectedIncident.resolved 
+                    ? 'bg-green-500/20 text-green-400 border-green-500/30' 
+                    : 'bg-red-500/20 text-red-400 border-red-500/30'
+                }`}>
+                  {selectedIncident.resolved ? '✓ Resolved' : '⚠ Active'}
+                </div>
+              </div>
+
+              <div className="absolute top-2 left-2 md:top-4 md:left-4">
+                <div className="px-2 py-1 md:px-3 md:py-1 rounded text-xs font-semibold bg-black/60 text-gray-200 backdrop-blur-sm border border-gray-600/50 font-['Inter',sans-serif]">
+                  <div className="flex items-center space-x-1 text-xs sm:text-sm text-gray-300">
+                     <CalendarDays size={16} className="flex-shrink-0"/> 
+                     <span>{new Date(selectedIncident.tsStart).toLocaleString()}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ) : (
+            <div className="text-center text-white p-4 md:p-8 font-['Inter',sans-serif]">
+              <div className="w-16 h-16 md:w-24 md:h-24 mx-auto mb-4 md:mb-6 bg-gray-900 rounded-full flex items-center justify-center border-2 border-gray-700">
+                <span className="text-2xl md:text-4xl">📹</span>
+              </div>
+              <div className="text-lg md:text-xl font-semibold mb-2 text-white">SecureSight CCTV</div>
+              <div className="text-sm text-gray-400">Select an incident from the timeline to begin playback</div>
+            </div>
+          )}
+        </div>
+      </Card>
+    </div>
+  )
+}
