@@ -39,6 +39,13 @@ export async function GET(request: NextRequest) {
       },
     })
 
+    // If database is empty, fall back to mock data
+    if (incidents.length === 0) {
+      console.log('Database is empty, falling back to mock data')
+      const mockData = getMockIncidents(resolved || undefined)
+      return NextResponse.json(mockData, { headers: corsHeaders })
+    }
+
     return NextResponse.json(incidents, { headers: corsHeaders })
   } catch (error) {
     console.error('Error fetching incidents:', error)
