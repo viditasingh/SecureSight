@@ -14,7 +14,11 @@ interface IncidentListProps {
 
 export function IncidentList({ onIncidentSelect, selectedIncidentId }: IncidentListProps) {
   const { incidents, error, isLoading, mutate } = useIncidents(false) // Only unresolved incidents
+  const { incidents: allIncidents } = useIncidents(true) // All incidents to get resolved count
   const [optimisticUpdates, setOptimisticUpdates] = useState<Set<string>>(new Set())
+
+  // Calculate resolved incidents count
+  const resolvedCount = allIncidents?.filter(incident => incident.resolved).length || 0
 
   const handleResolve = async (id: string) => {
     // Optimistic update
@@ -89,7 +93,8 @@ export function IncidentList({ onIncidentSelect, selectedIncidentId }: IncidentL
               </div>
             </div>
             <div className="flex items-center space-x-1 px-2 py-1 bg-gray-800/30 border border-gray-700/50 rounded-full">
-              <CheckCheck size={16} color="#04ff00" /> <p className='text-xs text-gray-300 font-medium'>4 resolved..</p>
+              <CheckCheck size={16} color="#04ff00" /> 
+              <p className='text-xs text-gray-300 font-medium'>{resolvedCount} resolved..</p>
             </div>
           </div>
         </div>

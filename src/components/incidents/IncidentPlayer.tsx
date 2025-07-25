@@ -69,6 +69,52 @@ export function IncidentPlayer({ selectedIncident }: IncidentPlayerProps) {
                   </div>
                 </div>
               </div>
+
+              {/* Other Camera Thumbnails - Horizontally aligned and bigger */}
+              <div className="absolute bottom-4 right-4 flex flex-row space-x-3">
+                {['Camera - 01', 'Camera - 02', 'Camera - 03']
+                  .filter(cameraName => cameraName !== selectedIncident.camera.name)
+                  .map((cameraName, index) => {
+                    // Use different thumbnail images for each camera
+                    const thumbnailImages = [
+                      '/images/thumbnails/incident-2.png',
+                      '/images/thumbnails/incident-3.png', 
+                      '/images/thumbnails/incident-4.png'
+                    ];
+                    
+                    return (
+                      <div 
+                        key={cameraName}
+                        className="relative w-40 h-24 md:w-48 md:h-28 rounded-lg border-2 border-gray-600/70 overflow-hidden bg-black/80 backdrop-blur-sm hover:border-amber-500/70 transition-all duration-300 cursor-pointer group shadow-lg hover:shadow-amber-500/20"
+                      >
+                        <Image
+                          src={thumbnailImages[index]}
+                          alt={cameraName}
+                          fill
+                          className="object-cover  transition-opacity duration-300"
+                          onError={(e) => {
+                            e.currentTarget.onerror = null
+                            e.currentTarget.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTI4IiBoZWlnaHQ9IjgwIiB2aWV3Qm94PSIwIDAgMTI4IDgwIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8cmVjdCB3aWR0aD0iMTI4IiBoZWlnaHQ9IjgwIiBmaWxsPSIjMTExODI3Ii8+CjxjaXJjbGUgY3g9IjY0IiBjeT0iNDAiIHI9IjE2IiBmaWxsPSIjNEI1NTYzIi8+Cjx0ZXh0IHg9IjY0IiB5PSI0NSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iIzlDQTNBRiIgZm9udC1mYW1pbHk9IkludGVyLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjEyIj7wn5O5PC90ZXh0Pgo8L3N2Zz4='
+                          }}
+                        />
+                        
+                        {/* Gradient overlay */}
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20"></div>
+                        
+                        {/* Camera label */}
+                        <div className="absolute bottom-1 left-1 right-1">
+                          <span className="text-xs font-semibold text-white bg-black/70 px-2 py-0.5 rounded text-center block backdrop-blur-sm">
+                            {cameraName.replace('Camera - ', 'CAM ')}
+                          </span>
+                        </div>
+                        
+                        {/* Status indicator */}
+                        <div className="absolute top-1 right-1 w-2 h-2 bg-green-500 rounded-full border border-black/50 shadow-sm"></div>
+                        
+                      </div>
+                    )
+                  })}
+              </div>
             </div>
           ) : (
             <div className="text-center text-white p-4 md:p-8 font-['Inter',sans-serif]">
